@@ -23,7 +23,7 @@ let subconverter = "apiurl.v1.mk"; //在线订阅转换后端，目前使用肥�
 let subconfig = "https://raw.githubusercontent.com/cmliu/ACL4SSR/main/Clash/config/ACL4SSR_Online_MultiCountry.ini"; //订阅转换配置文件
 
 let link = '';
-let edgetunnel = 'ed';
+let epeius = 'ed';
 let RproxyIP = 'false';
 let proxyIPs = [
 	'proxyip.aliyun.fxxk.dedyn.io',
@@ -273,7 +273,7 @@ export default {
 			pw = env.PASSWORD || "null";
 			path = env.PATH || "/?ed=2560";
 			//sni = env.SNI || host;
-			edgetunnel = env.ED || edgetunnel;
+			epeius = env.ED || epeius;
 			RproxyIP = env.RPROXYIP || RproxyIP;
 
 			if (host == "null" || pw == "null" ){
@@ -307,7 +307,7 @@ export default {
 			pw = url.searchParams.get('pw');
 			path = url.searchParams.get('path');
 			//sni = url.searchParams.get('sni') || host;
-			edgetunnel = url.searchParams.get('edgetunnel') || edgetunnel;
+			epeius = url.searchParams.get('epeius') || epeius;
 			RproxyIP = url.searchParams.get('proxyip') || RproxyIP;
 			
 			if (!url.pathname.includes("/sub")) {
@@ -482,7 +482,7 @@ export default {
 
 				//console.log(address, port, addressid);
 		
-				if (edgetunnel.trim() === 'cmliu' && RproxyIP.trim() === 'true') {
+				if (epeius.trim() === 'cmliu' && RproxyIP.trim() === 'true') {
 					// 将addressid转换为小写
 					let lowerAddressid = addressid.toLowerCase();
 					// 初始化找到的proxyIP为null
@@ -510,7 +510,7 @@ export default {
 				let 最终路径 = path ;
 				let 节点备注 = EndPS ;
 				if(proxyhosts && (host.includes('.workers.dev') || host.includes('pages.dev'))) {
-					最终路径 = `/${host}${path}&ed=2560`;
+					最终路径 = `/${host}${path}?ed=2560`;
 					伪装域名 = proxyhosts[Math.floor(Math.random() * proxyhosts.length)];
 					节点备注 = `${EndPS} 已启用临时域名中转服务，请尽快绑定自定义域！`;
 					//sni = 伪装域名;
