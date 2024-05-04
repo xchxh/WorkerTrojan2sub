@@ -516,9 +516,13 @@ export default {
 					//sni = 伪装域名;
 				}
 
-        const trojanLink = `trojan://${encodeURIComponent(pw)}@${address}:${port}?security=tls&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
+				let 密码 = pw;
+				if (!userAgent.includes('subconverter')){
+					密码 = encodeURIComponent(pw);
+				}
+				const trojanLink = `trojan://${密码}@${address}:${port}?security=tls&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
 
-        return trojanLink;
+				return trojanLink;
 			}).join('\n');
 			
 			let combinedContent = responseBody; // 合并内容
