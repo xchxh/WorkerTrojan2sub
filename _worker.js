@@ -516,7 +516,7 @@ export default {
 					//sni = 伪装域名;
 				}
 
-        const trojanLink = `trojan://${pw}@${address}:${port}?security=tls&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
+        const trojanLink = `trojan://${encodeURIComponent(pw)}@${address}:${port}?security=tls&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
 
         return trojanLink;
 			}).join('\n');
